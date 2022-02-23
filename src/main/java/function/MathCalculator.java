@@ -1,3 +1,5 @@
+package function;
+
 public class MathCalculator {
     public Double arctg(double x, double precision) {
 //        validateParameters(precision);
