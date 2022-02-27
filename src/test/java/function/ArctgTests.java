@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class ArctgTests {
 
   private MathCalculator calculator = new MathCalculator();
-  private double DEFAULT_PRECISION = Math.pow(10D,-15);
+  private double DEFAULT_PRECISION = Math.pow(10D, -15);
 
   @Test
   void testArctg() throws Exception {
@@ -32,10 +32,11 @@ public class ArctgTests {
       "1  , 0.7853981633974483",
   })
   void testPrecision(double x, Double expectedResult) throws Exception {
-    assertTrue(Math.abs(calculator.arctg(x, DEFAULT_PRECISION) - expectedResult) <= DEFAULT_PRECISION);
+    assertTrue(
+        Math.abs(calculator.arctg(x, DEFAULT_PRECISION) - expectedResult) <= DEFAULT_PRECISION);
   }
 
-  @DisplayName("Testing precision of calculating negative values in interval [-1,1]")
+  @DisplayName("Testing precision of calculating negative values in interval [-1,0)")
   @ParameterizedTest
   @CsvSource({
       "-0.1, -0.09966865249116204",
@@ -45,32 +46,67 @@ public class ArctgTests {
       "-0.9, -0.7328151017865066",
       "-1  , -0.7853981633974483",})
   void testNegative(double x, Double expectedResult) throws Exception {
-    assertTrue(Math.abs(calculator.arctg(x, DEFAULT_PRECISION) - expectedResult) <= DEFAULT_PRECISION);
+    assertTrue(
+        Math.abs(calculator.arctg(x, DEFAULT_PRECISION) - expectedResult) <= DEFAULT_PRECISION);
   }
 
   @DisplayName("Testing throwing exception while x more than 1")
   @Test
   void testMoreThen1() throws Exception {
-    assertThrows(IllegalArgumentException.class, () -> calculator.arctg(1.1, DEFAULT_PRECISION));
+    Throwable exception = assertThrows(IllegalArgumentException.class, () -> calculator.arctg(1.1, DEFAULT_PRECISION));
+    assertEquals(exception.getMessage(), "Module of x can't be more than 1, because of the way of calculating");
   }
 
   @DisplayName("Testing throwing exception while x less than -1")
   @Test
   void testLessThenMinus1() throws Exception {
-    assertThrows(IllegalArgumentException.class, () -> calculator.arctg(-1.1, DEFAULT_PRECISION));
+    Throwable exception = assertThrows(IllegalArgumentException.class, () -> calculator.arctg(-1.1, DEFAULT_PRECISION));
+    assertEquals(exception.getMessage(), "Module of x can't be more than 1, because of the way of calculating");
   }
 
   @DisplayName("Testing throwing exception while precision equals 0")
   @Test
   void testPrecision0() throws Exception {
-    assertThrows(IllegalArgumentException.class, () -> calculator.arctg(-1.1, 0));
+    Throwable exception = assertThrows(IllegalArgumentException.class, () -> calculator.arctg(-1.1, 0));
+    assertEquals(exception.getMessage(),"Precision can't be less or equal 0");
   }
 
   @DisplayName("Testing throwing exception while precision less then 0")
   @Test
   void testPrecisionLess0() throws Exception {
-    assertThrows(IllegalArgumentException.class, () -> calculator.arctg(-1.1, -1));
+    Throwable exception = assertThrows(IllegalArgumentException.class, () -> calculator.arctg(-1.1, -1));
+    assertEquals(exception.getMessage(),"Precision can't be less or equal 0");
   }
 
+  @DisplayName("Testing throwing exception while precision is NaN")
+  @Test
+  void testPrecisionIsNan() throws Exception {
+    Throwable exception = assertThrows(IllegalArgumentException.class,
+        () -> calculator.arctg(-1.1, Double.NaN));
+    assertEquals(exception.getMessage(),"Precision is NaN");
+  }
 
+  @DisplayName("Testing throwing exception while X is NaN")
+  @Test
+  void testXIsNan() throws Exception {
+    Throwable exception = assertThrows(IllegalArgumentException.class,
+        () -> calculator.arctg(Double.NaN, 1));
+    assertEquals(exception.getMessage(), "X is NaN");
+  }
+
+  @DisplayName("Testing throwing exception while X is Double Infinite")
+  @Test
+  void testXIsInfinite() throws Exception {
+    Throwable exception =assertThrows(IllegalArgumentException.class,
+        () -> calculator.arctg(Double.POSITIVE_INFINITY, 1));
+    assertEquals(exception.getMessage(),"X is Infinite");
+  }
+
+  @DisplayName("Testing throwing exception while Precision is Double Infinite")
+  @Test
+  void testPrecisionIsInfinite() throws Exception {
+    Throwable exception =assertThrows(IllegalArgumentException.class,
+        () -> calculator.arctg(1, Double.POSITIVE_INFINITY));
+    assertEquals(exception.getMessage(),"Precision is Infinite");
+  }
 }

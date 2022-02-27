@@ -22,6 +22,14 @@ public class MathCalculator {
   }
 
   private void validateParameters(double x, double precision) throws Exception {
+    if(Double.isInfinite(x))
+      throw new IllegalArgumentException("X is Infinite");
+    if(Double.isInfinite(precision))
+      throw new IllegalArgumentException("Precision is Infinite");
+    if(Double.isNaN(x))
+      throw new IllegalArgumentException("X is NaN");
+    if(Double.isNaN(precision))
+      throw new IllegalArgumentException("Precision is NaN");
     if (precision <= 0)
       throw new IllegalArgumentException("Precision can't be less or equal 0");
     if (Math.abs(x) > 1)
