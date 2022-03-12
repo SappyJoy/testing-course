@@ -1,11 +1,13 @@
-package domain.model;
+package domain.model.composition;
 
 public enum Union {
   AND("и"),
   BUT("но"),
-  IF("если");
+  IF("если"),
+  AFTER("затем"),
+  THEN("тогда");
 
-  private String string;
+  private final String string;
 
   Union(String string) {
     this.string = string;

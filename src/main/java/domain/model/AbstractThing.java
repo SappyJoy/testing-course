@@ -1,5 +1,7 @@
 package domain.model;
 
+import domain.model.composition.Pronoun;
+
 public abstract class AbstractThing {
   protected String name;
   protected Pronoun pronoun = Pronoun.IT;

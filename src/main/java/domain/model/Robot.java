@@ -1,6 +1,8 @@
 package domain.model;
 
-public class Robot extends Object implements IActionable {
+import domain.model.composition.Pronoun;
+
+public class Robot extends Subject {
   Pronoun pronoun;
   Logic logic;
   Idea idea;
@@ -29,11 +31,15 @@ public class Robot extends Object implements IActionable {
     return watch() + " " + description;
   }
 
-  String watch(Object what, ActionDescription description) {
+  String watch(Subject what, ActionDescription description) {
     return watch() + " за " + what + " " + description;
   }
 
-  String apply(AbstractThing what, Object toWhat) {
-    return this.toString() + " применить " + what + " к " + toWhat;
+  String apply(AbstractThing what, Subject toWhat) {
+    return this + " применить " + what + " к " + toWhat;
+  }
+
+  String turnAround(ActionDescription adverb) {
+    return adverb + " " + this + " повернулся";
   }
 }

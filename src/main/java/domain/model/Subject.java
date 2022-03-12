@@ -2,18 +2,24 @@ package domain.model;
 
 import java.util.function.Function;
 
-public abstract class Object extends AbstractThing {
-  protected String ownerName;
+public abstract class Subject extends AbstractThing implements IOwnerable {
+  private String ownerName;
 
   public void setName(String name) {
     this.name = name;
   }
 
+  @Override
   public void setOwnerName(String ownerName) {
     this.ownerName = ownerName;
   }
 
-  String begin(Function<Object, String> act, Object what) {
+  @Override
+  public String getOwnerName() {
+    return ownerName;
+  }
+
+  String begin(Function<java.lang.Object, String> act, java.lang.Object what) {
     return this.toString() + " начинают " + act.apply(what);
   }
 

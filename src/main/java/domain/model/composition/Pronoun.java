@@ -1,11 +1,11 @@
-package domain.model;
+package domain.model.composition;
 
-enum Pronoun {
+public enum Pronoun {
   HE("он"),
   SHE("она"),
   IT("оно");
 
-  private String string;
+  private final String string;
 
   Pronoun(String string) {
     this.string = string;

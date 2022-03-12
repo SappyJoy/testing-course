@@ -1,7 +1,6 @@
 package domain.model;
 
-public class Idea extends Object {
-  String what;
+public class Idea extends Subject {
   String description;
 
   public Idea() {
@@ -13,7 +12,7 @@ public class Idea extends Object {
   }
 
   String what() {
-    return this.toString() + " " + description;
+    return this + " " + description;
   }
 
   @Override

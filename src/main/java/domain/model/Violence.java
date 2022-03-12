@@ -1,6 +1,7 @@
 package domain.model;
 
 public class Violence extends AbstractThing {
+
   Class classOfViolence;
 
   public Violence() {
@@ -16,7 +17,7 @@ public class Violence extends AbstractThing {
     PHYSICAL("физическое"),
     MORAL("моральное");
 
-    private String string;
+    private final String string;
 
     Class(String string) {
       this.string = string;
