@@ -17,9 +17,16 @@ public class ArctgTests {
     System.out.println(calculator.arctg(1, DEFAULT_PRECISION).toString());
   }
 
-  @DisplayName("Testing precision of calculating method in interval [0,1]")
+  @DisplayName("Testing precision of calculating method in interval [-1,1]")
   @ParameterizedTest
-  @CsvSource({"0,0",
+  @CsvSource({
+      "-0.1, -0.09966865249116204",
+      "-0.3, -0.2914567944778671",
+      "-0.5, -0.4636476090008061",
+      "-0.7, -0.6107259643892086",
+      "-0.9, -0.7328151017865066",
+      "-1  , -0.7853981633974483",
+      "0,0",
       "0.1, 0.09966865249116204",
       "0.2, 0.19739555984988078",
       "0.3, 0.2914567944778671",
@@ -32,20 +39,6 @@ public class ArctgTests {
       "1  , 0.7853981633974483",
   })
   void testPrecision(double x, Double expectedResult) throws Exception {
-    assertTrue(
-        Math.abs(calculator.arctg(x, DEFAULT_PRECISION) - expectedResult) <= DEFAULT_PRECISION);
-  }
-
-  @DisplayName("Testing precision of calculating negative values in interval [-1,0)")
-  @ParameterizedTest
-  @CsvSource({
-      "-0.1, -0.09966865249116204",
-      "-0.3, -0.2914567944778671",
-      "-0.5, -0.4636476090008061",
-      "-0.7, -0.6107259643892086",
-      "-0.9, -0.7328151017865066",
-      "-1  , -0.7853981633974483",})
-  void testNegative(double x, Double expectedResult) throws Exception {
     assertTrue(
         Math.abs(calculator.arctg(x, DEFAULT_PRECISION) - expectedResult) <= DEFAULT_PRECISION);
   }
