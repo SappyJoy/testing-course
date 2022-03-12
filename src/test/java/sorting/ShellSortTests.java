@@ -17,16 +17,6 @@ public class ShellSortTests {
   ShellSort sorter = new ShellSort();
 
   @DisplayName("Test correct work of sort algorithm")
-  @Test
-  void testSorting() {
-    int[] arrayToSort = new int[]{5, 4, 3, 2, 1};
-    int[] expectedResult = new int[]{1, 2, 3, 4, 5};
-
-    sorter.sort(arrayToSort);
-    assertArrayEquals(arrayToSort, expectedResult);
-  }
-
-  @DisplayName("Test correct work of sort algorithm")
   @ParameterizedTest
   @MethodSource("provideArraysForSortTests")
   void sortTests(int[] arrayToSort, int[] expectedResult) {
