@@ -52,35 +52,35 @@ public class ArctgTests {
 
   @DisplayName("Testing throwing exception while x more than 1")
   @Test
-  void testMoreThen1() throws Exception {
+  void testMoreThen1()  {
     Throwable exception = assertThrows(IllegalArgumentException.class, () -> calculator.arctg(1.1, DEFAULT_PRECISION));
     assertEquals(exception.getMessage(), "Module of x can't be more than 1, because of the way of calculating");
   }
 
   @DisplayName("Testing throwing exception while x less than -1")
   @Test
-  void testLessThenMinus1() throws Exception {
+  void testLessThenMinus1()  {
     Throwable exception = assertThrows(IllegalArgumentException.class, () -> calculator.arctg(-1.1, DEFAULT_PRECISION));
     assertEquals(exception.getMessage(), "Module of x can't be more than 1, because of the way of calculating");
   }
 
   @DisplayName("Testing throwing exception while precision equals 0")
   @Test
-  void testPrecision0() throws Exception {
+  void testPrecision0()  {
     Throwable exception = assertThrows(IllegalArgumentException.class, () -> calculator.arctg(-1.1, 0));
     assertEquals(exception.getMessage(),"Precision can't be less or equal 0");
   }
 
   @DisplayName("Testing throwing exception while precision less then 0")
   @Test
-  void testPrecisionLess0() throws Exception {
+  void testPrecisionLess0()  {
     Throwable exception = assertThrows(IllegalArgumentException.class, () -> calculator.arctg(-1.1, -1));
     assertEquals(exception.getMessage(),"Precision can't be less or equal 0");
   }
 
   @DisplayName("Testing throwing exception while precision is NaN")
   @Test
-  void testPrecisionIsNan() throws Exception {
+  void testPrecisionIsNan()  {
     Throwable exception = assertThrows(IllegalArgumentException.class,
         () -> calculator.arctg(-1.1, Double.NaN));
     assertEquals(exception.getMessage(),"Precision is NaN");
@@ -88,7 +88,7 @@ public class ArctgTests {
 
   @DisplayName("Testing throwing exception while X is NaN")
   @Test
-  void testXIsNan() throws Exception {
+  void testXIsNan()  {
     Throwable exception = assertThrows(IllegalArgumentException.class,
         () -> calculator.arctg(Double.NaN, 1));
     assertEquals(exception.getMessage(), "X is NaN");
@@ -96,7 +96,7 @@ public class ArctgTests {
 
   @DisplayName("Testing throwing exception while X is Double Infinite")
   @Test
-  void testXIsInfinite() throws Exception {
+  void testXIsInfinite()  {
     Throwable exception =assertThrows(IllegalArgumentException.class,
         () -> calculator.arctg(Double.POSITIVE_INFINITY, 1));
     assertEquals(exception.getMessage(),"X is Infinite");
@@ -104,7 +104,7 @@ public class ArctgTests {
 
   @DisplayName("Testing throwing exception while Precision is Double Infinite")
   @Test
-  void testPrecisionIsInfinite() throws Exception {
+  void testPrecisionIsInfinite()  {
     Throwable exception =assertThrows(IllegalArgumentException.class,
         () -> calculator.arctg(1, Double.POSITIVE_INFINITY));
     assertEquals(exception.getMessage(),"Precision is Infinite");
