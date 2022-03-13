@@ -15,7 +15,7 @@ public class MolecularComponents extends Subject {
     this.amount = amount;
   }
 
-  public int getAmount() {
-    return amount;
+  public String getAmount() {
+    return "количество " + this;
   }
 }

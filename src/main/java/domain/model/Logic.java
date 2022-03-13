@@ -13,8 +13,8 @@ public class Logic extends Subject {
     return this + " стрекочут " + description;
   }
 
-  String manipulate(Subject what) {
-    return this + manipulateWith(what);
+  String manipulate(java.lang.Object what) {
+    return this + " " + manipulateWith(what);
   }
 
   static String manipulateWith(java.lang.Object what) {

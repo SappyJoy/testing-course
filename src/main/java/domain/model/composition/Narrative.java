@@ -1,7 +1,5 @@
 package domain.model.composition;
 
-import java.io.PrintStream;
-
 public class Narrative {
   private final StringBuilder builder;
 
@@ -32,32 +30,32 @@ public class Narrative {
     builder.append(".");
   }
 
-  public void print(PrintStream out) {
-    out.print(builder);
+  public String toString() {
+    return builder.toString();
   }
 
-  public void print(PrintStream out, int limit) {
+  public String toString(int limit) {
+    StringBuilder result = new StringBuilder();
     String[] sentenceElements = builder.toString().split(" ");
     int caret = 0;
     for (String element : sentenceElements) {
       if (caret + element.length() + 1 <= limit) {
         caret += element.length();
-        out.print(element);
-        out.print(" ");
+        result.append(element).append(" ");
       } else if (caret == 0 && element.length() > limit) {
         caret = element.length();
-        out.print(element);
+        result.append(element);
       } else {
         caret = element.length() + 1;
-        out.print("\n");
-        out.print(element);
-        out.print(" ");
+        result.append("\n").append(element).append(" ");
       }
 
       if (caret >= limit) {
-        out.print("\n");
+        result.append("\n");
         caret = 0;
       }
     }
+
+    return result.toString();
   }
 }
