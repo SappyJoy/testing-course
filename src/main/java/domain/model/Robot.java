@@ -13,6 +13,7 @@ public class Robot extends Subject {
     logic = new Logic();
     logic.setOwnerName(this.name);
     idea = new Idea();
+    idea.setOwnerName(this.name);
   }
 
   public Robot(String name) {
@@ -35,7 +36,7 @@ public class Robot extends Subject {
     return watch() + " " + description;
   }
 
-  String watch(Subject what, ActionDescription description) {
+  String watch(Object what, ActionDescription description) {
     return watch() + " за " + what + " " + description;
   }
 

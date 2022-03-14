@@ -14,18 +14,25 @@ public class NarrativeCompositionTest {
   Narrative narrative = null;
 
   // Dramatis personae
-  Robot marvin = new Robot("Марвин");
+  Robot marvin = null;
 
   // Subjects with which the robot interacts
-  Human woman = new Human(Pronoun.SHE);
-  Violence moralViolence = new Violence(Violence.Class.MORAL);
-  String somethingToSay = "аномалии меня бесят";
-  Door door = new Door();
-  Cosmos cosmos = new Cosmos();
+  Human woman = null;
+  Violence moralViolence = null;
+  String somethingToSay = null;
+  Door door = null;
+  Cosmos cosmos = null;
 
   @BeforeEach
   void setupThis() {
     narrative = new Narrative();
+
+    marvin = new Robot("Марвин");
+    woman = new Human(Pronoun.SHE);
+    moralViolence = new Violence(Violence.Class.MORAL);
+    somethingToSay = "аномалии меня бесят";
+    door = new Door();
+    cosmos = new Cosmos();
   }
 
   @Test
@@ -50,9 +57,43 @@ public class NarrativeCompositionTest {
         PunctuationMark.COMMA,
         Union.AND,
         marvin.getLogic().say(somethingToSay));
+    narrative.addSentence(marvin.apply(marvin, marvin));
+    narrative.addSentence(marvin.getLogic().measure(ActionDescription.ENCORE, marvin));
+    narrative.addSentence(
+        Union.THEN,
+        moralViolence,
+        PunctuationMark.COMMA,
+        Union.BUT,
+        marvin.watch(marvin.getIdea(), ActionDescription.DISGUST));
+    narrative.addSentence(marvin.watch(cosmos, ActionDescription.WITH_SPASM_OF_DESPAIR));
     assertEquals(
         "Марвин применить моральное насилие к она и Марвин повернулся. Затем Марвин логические"
-            + " схемы щёлкают, и Марвин логические схемы говорят: \"аномалии меня бесят\".",
+            + " схемы щёлкают, и Марвин логические схемы говорят: \"аномалии меня бесят\". Марвин"
+            + " применить Марвин к Марвин. Марвин логические схемы на бис измеряют Марвин. Тогда"
+            + " моральное насилие, но Марвин наблюдает за Марвин идея с отвращением. Марвин"
+            + " наблюдает за космос с судорогой отчаяния.",
         narrative.toString());
+
+    marvin.getIdea().setDescription(door.toString());
+    assertEquals("Марвин идея дверь", marvin.getIdea().toString());
+  }
+
+  @Test
+  void wrongInputTest() {
+    narrative.addSentence(marvin.getIdea()); // Idea.description is null
+
+    NullPointerException thrown1 =
+        assertThrows(NullPointerException.class, () -> narrative.addSentence(null, Union.AND));
+
+    cosmos.getClosestCubicParsec().setDescription(null);
+    assertNotEquals(null, cosmos.getClosestCubicParsec().toString());
+
+    door.molecularComponents.setOwnerName(null);
+    assertNotEquals(null, door.molecularComponents.toString());
+
+    assertNotEquals(null, marvin.watch(null, null));
+
+    woman.getBrain().getCell().setName(null);
+    assertNotEquals(null, woman.getBrain().getCell().toString());
   }
 }
