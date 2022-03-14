@@ -2,7 +2,9 @@ package domain.model.composition;
 
 public enum PunctuationMark {
   PERIOD("."),
-  COMMA(",");
+  COMMA(","),
+  EXCLAMATION("!"),
+  QUESTION("?");
 
   private final String string;
 

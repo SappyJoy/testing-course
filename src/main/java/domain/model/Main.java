@@ -16,7 +16,7 @@ public class Main {
     Robot marvin = new Robot("Марвин");
     Violence physicalViolence = new Violence(Violence.Class.PHYSICAL);
     Door door = new Door(1200000);
-    marvin.idea.setDescription(marvin.apply(physicalViolence, door));
+    marvin.getIdea().setDescription(marvin.apply(physicalViolence, door));
     Human she = new Human(Pronoun.SHE);
     Analysis comparativeAnalysis =
         new Analysis(
@@ -27,7 +27,7 @@ public class Main {
     narrative.addSentence(
         marvin.getLogic().chirp(ActionDescription.DISGUST),
         Union.AND,
-        marvin.getLogic().begin(Logic::manipulateWith, marvin.idea));
+        marvin.getLogic().begin(Logic::manipulateWith, marvin.getIdea()));
     narrative.addSentence(
         Union.AFTER,
         marvin.getLogic().click(),
@@ -55,6 +55,6 @@ public class Main {
   }
 
   public static void run(Narrative creator) {
-    creator.print(System.out, 70);
+    System.out.print(creator.toString(70));
   }
 }

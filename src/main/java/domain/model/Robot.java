@@ -3,9 +3,9 @@ package domain.model;
 import domain.model.composition.Pronoun;
 
 public class Robot extends Subject {
-  Pronoun pronoun;
-  Logic logic;
-  Idea idea;
+  private Pronoun pronoun;
+  private Logic logic;
+  private Idea idea;
 
   public Robot(String name, Pronoun pronoun) {
     this.name = name;
@@ -21,6 +21,10 @@ public class Robot extends Subject {
 
   public Logic getLogic() {
     return logic;
+  }
+
+  public Idea getIdea() {
+    return idea;
   }
 
   String watch() {
@@ -39,7 +43,11 @@ public class Robot extends Subject {
     return this + " применить " + what + " к " + toWhat;
   }
 
+  String turnAround() {
+    return this + " повернулся";
+  }
+
   String turnAround(ActionDescription adverb) {
-    return adverb + " " + this + " повернулся";
+    return adverb + " " + turnAround();
   }
 }
