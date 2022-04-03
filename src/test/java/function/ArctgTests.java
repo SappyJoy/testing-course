@@ -102,4 +102,10 @@ public class ArctgTests {
         () -> calculator.arctg(1, Double.POSITIVE_INFINITY));
     assertEquals(exception.getMessage(),"Precision is Infinite");
   }
+
+  @DisplayName("Testing throwing exception while X")
+  @Test
+  void testPrecisionMinus0() throws Exception {
+    assertEquals(calculator.arctg(-0,0.00002),-0);
+  }
 }
