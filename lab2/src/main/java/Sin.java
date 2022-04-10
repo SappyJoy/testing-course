@@ -4,7 +4,7 @@
  */
 
 
-public class Sin {
+public class Sin extends MathFunction {
 
     public static double sin(double x, double precision) {
         double previousValue = x;
@@ -19,4 +19,8 @@ public class Sin {
         return currentValue;
     }
 
+    @Override
+    public double calculate(double x, int precision) {
+        return sin(x, precision);
+    }
 }

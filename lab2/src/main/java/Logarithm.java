@@ -1,4 +1,4 @@
-public class Logarithm {
+public class Logarithm extends MathFunction {
     static int DEFAULT_PRECISION = 6;
 
     public static double ln(double x, int precision) {
@@ -21,5 +21,10 @@ public class Logarithm {
 
     public static double ln(double x) {
         return ln(x, DEFAULT_PRECISION);
+    }
+
+    @Override
+    public double calculate(double x, int precision) {
+        return ln(x, precision);
     }
 }
