@@ -10,7 +10,7 @@ public class Main {
   public static void main(String[] args) {
     try {
     MathFunction system = new FunctionSystem();
-    CsvPrinter.print("csv/function.csv", system, -5, 5, 0.01, 6);
+    CsvPrinter.print("csv/function.csv", system, -2, 2, 0.1, 6);
     } catch (IOException exception) {
       logger.log(Level.SEVERE, "File cannot be used for printing", exception);
       System.exit(1);

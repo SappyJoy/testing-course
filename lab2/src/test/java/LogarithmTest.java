@@ -29,17 +29,17 @@ public class LogarithmTest {
             "153, 5, 5.030438",
     })
     void testLnWithCorrectValues(double x, int precision, double expected) {
-        assertEquals(expected, Logarithm.ln(x, precision), Math.pow(10, -1 * precision));
+        assertEquals(expected, Ln.ln(x, precision), Math.pow(10, -1 * precision));
     }
 
     @Test
     void testLnPrecisionEqualsZero() {
-        assertThrows(AssertionError.class, () -> Logarithm.ln(5, 0));
+        assertThrows(AssertionError.class, () -> Ln.ln(5, 0));
     }
 
     @Test
     void testLnPrecisionLessThanZero() {
-        assertThrows(AssertionError.class, () -> Logarithm.ln(5, -3));
+        assertThrows(AssertionError.class, () -> Ln.ln(5, -3));
     }
 
     @ParameterizedTest
@@ -48,6 +48,6 @@ public class LogarithmTest {
             "0", "-0.123", "-0.21", "-132", "-1024", "" + Integer.MIN_VALUE
     })
     void testLnWithWrongValues(double x) {
-        assertThrows(AssertionError.class, () -> Logarithm.ln(x));
+        assertThrows(AssertionError.class, () -> Ln.ln(x));
     }
 }
