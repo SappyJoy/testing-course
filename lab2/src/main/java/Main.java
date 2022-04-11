@@ -28,7 +28,7 @@ public class Main {
       CsvPrinter.print("csv/log3.csv", log3, 0.1, 2, 0.1, 6);
 
       MathFunction system = new FunctionSystem();
-      CsvPrinter.print("csv/function.csv", system, -2, 2, 0.1, 6);
+      CsvPrinter.print("csv/function.csv", system, -2, 2, 0.01, 6);
     } catch (IOException exception) {
       logger.log(Level.SEVERE, "File cannot be used for printing", exception);
       System.exit(1);

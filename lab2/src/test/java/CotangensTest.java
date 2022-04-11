@@ -21,7 +21,7 @@ public class CotangensTest {
     private Sin mockSin;
 
     @Mock
-    private Sin mockCos;
+    private Cos mockCos;
 
     @ParameterizedTest
     @DisplayName("Testing ln function  (0, ]")
