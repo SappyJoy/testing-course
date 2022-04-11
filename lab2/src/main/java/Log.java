@@ -1,10 +1,9 @@
 public class Log extends MathFunction {
 
-  private final Ln ln;
+  private final Ln ln = new Ln();
   private final int base;
 
   public Log(int base) {
-    this.ln = new Ln();
     this.base = base;
   }
 

@@ -1,16 +1,9 @@
 public class FunctionSystem extends MathFunction {
 
-  private final MathFunction trigonometric;
-  private final Ln ln;
-  private final Log log2;
-  private final Log log3;
-
-  public FunctionSystem() {
-    trigonometric = new Sin();
-    ln = new Ln();
-    log2 = new Log(2);
-    log3 = new Log(3);
-  }
+  private final MathFunction trigonometric = new Cot();
+  private final Ln ln = new Ln();
+  private final Log log2 = new Log(2);
+  private final Log log3 = new Log(3);
 
   @Override
   public double calculate(double x, int precision) {

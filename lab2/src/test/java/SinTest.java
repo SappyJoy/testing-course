@@ -1,13 +1,15 @@
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SinTest {
 
-    private double DEFAULT_PRECISION = 10E-5;
+    private int DEFAULT_PRECISION = 6;
+
+    MathFunction sin = new Sin();
 
     @DisplayName("Testing precision of calculating sin")
     @ParameterizedTest
@@ -26,7 +28,7 @@ public class SinTest {
             "0.001  , 0.0009999998333333417",
     })
     void TestSin(double x, double expected) {
-        assertEquals(expected, Sin.sin(x, DEFAULT_PRECISION), DEFAULT_PRECISION);
+        assertEquals(expected, sin.calculate(x, DEFAULT_PRECISION), DEFAULT_PRECISION);
     }
 
     @DisplayName("Testing sin Properties: четность")
@@ -45,7 +47,7 @@ public class SinTest {
             "23 , -0.8462204"
     })
     void TestSinProperties(double x, double expected) {
-        assertEquals(-expected, Sin.sin(-x, DEFAULT_PRECISION), DEFAULT_PRECISION);
+        assertEquals(-expected, sin.calculate(-x, DEFAULT_PRECISION), DEFAULT_PRECISION);
     }
 
     @DisplayName("Testing sin Properties: значения на границах четвертей")
@@ -58,7 +60,7 @@ public class SinTest {
             "0.5 ,1"
     })
     void TestSinQuarters(double x, double expected) {
-        assertEquals(expected, Sin.sin(x * Math.PI, DEFAULT_PRECISION), DEFAULT_PRECISION);
+        assertEquals(expected, sin.calculate(x * Math.PI, DEFAULT_PRECISION), DEFAULT_PRECISION);
     }
 
     @DisplayName("Testing sin Properties: знаки в четвертях")
@@ -69,8 +71,8 @@ public class SinTest {
             "1.25 , -1",
             "1.75 , -1",
     })
-    void TestSinMiddleQuarters(double x, double expected) {
-        assertTrue(expected * Sin.sin(x * Math.PI, DEFAULT_PRECISION) > 0);
+    void testSinMiddleQuarters(double x, double expected) {
+        assertTrue(expected * sin.calculate(x * Math.PI, DEFAULT_PRECISION) > 0);
     }
 
 }

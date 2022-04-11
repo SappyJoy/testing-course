@@ -6,7 +6,7 @@
 
 public class Sin extends MathFunction {
 
-    public static double sin(double x, double precision) {
+    private double sin(double x, double precision) {
         double previousValue = x;
         double factorial = 2 * 3;
         double currentValue = x - Math.pow(x, 3) / factorial;
@@ -21,6 +21,6 @@ public class Sin extends MathFunction {
 
     @Override
     public double calculate(double x, int precision) {
-        return sin(x, precision);
+        return sin(x, Math.pow(10, -precision));
     }
 }

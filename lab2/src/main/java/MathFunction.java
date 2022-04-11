@@ -1,7 +1,7 @@
 public abstract class MathFunction {
   abstract double calculate(double x, int precision);
 
-  static void checkPrecision(int precision) throws AssertionError {
+  void checkPrecision(int precision) throws AssertionError {
     assert precision > 0 && precision <= Double.MIN_EXPONENT * -1 : "Precision should be in interval [1, " + Double.MIN_EXPONENT * -1 + "]";
   }
 
