@@ -18,7 +18,7 @@ public class Cos extends MathFunction{
     }
 
     @Override
-    double calculate(double x, int precision) {
+    double calculate(Double x, Integer precision) {
         return cos(x, precision);
     }
 }

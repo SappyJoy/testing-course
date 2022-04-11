@@ -28,7 +28,7 @@ public class Cot extends MathFunction {
     }
 
     @Override
-    double calculate(double x, int precision) {
+    double calculate(Double x, Integer precision) {
         return cot(x, precision);
     }
 }

@@ -20,7 +20,7 @@ public class Sin extends MathFunction {
     }
 
     @Override
-    public double calculate(double x, int precision) {
+    public double calculate(Double x, Integer precision) {
         return sin(x, Math.pow(10, -precision));
     }
 }

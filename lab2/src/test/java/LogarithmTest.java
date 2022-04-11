@@ -34,12 +34,12 @@ public class LogarithmTest {
 
     @Test
     void testLnPrecisionEqualsZero() {
-        assertThrows(AssertionError.class, () -> ln.calculate(5, 0));
+        assertThrows(AssertionError.class, () -> ln.calculate(5D, 0));
     }
 
     @Test
     void testLnPrecisionLessThanZero() {
-        assertThrows(AssertionError.class, () -> ln.calculate(5, -3));
+        assertThrows(AssertionError.class, () -> ln.calculate(5D, -3));
     }
 
     @ParameterizedTest

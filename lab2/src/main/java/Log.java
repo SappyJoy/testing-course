@@ -1,14 +1,20 @@
 public class Log extends MathFunction {
 
-  private final Ln ln = new Ln();
-  private final int base;
+  private final Ln ln;
+  private final Double base;
 
-  public Log(int base) {
+  public Log(Double base) {
     this.base = base;
+    this.ln = new Ln();
+  }
+
+  public Log(Double base, Ln ln) {
+    this.base = base;
+    this.ln = ln;
   }
 
   @Override
-  double calculate(double x, int precision) {
+  double calculate(Double x, Integer precision) {
     checkPrecision(precision);
     assert x > 0 : "x should be equals or greater zero";
 

@@ -2,11 +2,11 @@ public class FunctionSystem extends MathFunction {
 
   private final MathFunction trigonometric = new Cot();
   private final Ln ln = new Ln();
-  private final Log log2 = new Log(2);
-  private final Log log3 = new Log(3);
+  private final Log log2 = new Log(2D);
+  private final Log log3 = new Log(3D);
 
   @Override
-  public double calculate(double x, int precision) {
+  public double calculate(Double x, Integer precision) {
     if (x <= 0) {
       return trigonometric.calculate(x, precision);
     }

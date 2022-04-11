@@ -21,10 +21,10 @@ public class Main {
       Ln ln = new Ln();
       CsvPrinter.print("csv/ln.csv", ln, 0.1, 2, 0.1, 6);
 
-      Log log2 = new Log(2);
+      Log log2 = new Log(2D);
       CsvPrinter.print("csv/log2.csv", log2, 0.1, 2, 0.1, 6);
 
-      Log log3 = new Log(3);
+      Log log3 = new Log(3D);
       CsvPrinter.print("csv/log3.csv", log3, 0.1, 2, 0.1, 6);
 
       MathFunction system = new FunctionSystem();

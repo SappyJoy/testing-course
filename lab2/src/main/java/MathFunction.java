@@ -6,7 +6,7 @@ public abstract class MathFunction {
   static final double EPSILON = 1E-6;
     static final int DEFAULT_MAX_ITERATIONS = 1000;
 
-  abstract double calculate(double x, int precision);
+  abstract double calculate(Double x, Integer precision);
 
   void checkPrecision(int precision) throws AssertionError {
     assert precision > 0 && precision <= Double.MIN_EXPONENT * -1 : "Precision should be in interval [1, " + Double.MIN_EXPONENT * -1 + "]";

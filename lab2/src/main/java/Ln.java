@@ -24,7 +24,7 @@ public class Ln extends MathFunction {
     }
 
     @Override
-    public double calculate(double x, int precision) {
+    public double calculate(Double x, Integer precision) {
         return ln(x, precision);
     }
 }
