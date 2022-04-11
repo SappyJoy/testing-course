@@ -11,7 +11,7 @@ public class Ln extends MathFunction {
         double epsilon = Math.pow(10, (-1) * precision);
 
         int i = 1;
-        while (i < 5 && Math.abs(result - previousResult) > epsilon * epsilon) {
+        while (i < DEFAULT_MAX_ITERATIONS && Math.abs(result - previousResult) > epsilon * epsilon) {
             previousResult = result;
             result += 2 * Math.pow(y, 2 * i + 1) / (2 * i + 1);
             i++;

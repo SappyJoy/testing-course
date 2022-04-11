@@ -3,7 +3,8 @@ import java.util.List;
 
 public abstract class MathFunction {
 
-  static double EPSILON = 1E-6;
+  static final double EPSILON = 1E-6;
+    static final int DEFAULT_MAX_ITERATIONS = 1000;
 
   abstract double calculate(double x, int precision);
 
