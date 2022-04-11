@@ -2,13 +2,24 @@ import java.util.List;
 
 public class Cot extends MathFunction {
 
-    private final MathFunction sin = new Sin();
+    private final MathFunction sin;
+    private final MathFunction cos;
+
+    public Cot(){
+        this.sin = new Sin();
+        this.cos = new Cos();
+    }
+
+    public Cot(MathFunction sin, MathFunction cos){
+        this.sin = sin;
+        this.cos = cos;
+    }
 
     private double cot(double x, int precision) {
         assert x / Math.PI != 0 : "дурак оно в бесконечность уйдет";
         double sinus  = sin.calculate(x, precision);
-        double ctg_module = Math.sqrt((1 / Math.pow(sinus, 2)) - 1);
-        return SignDefiner.defineSign(x, List.of(1, -1, 1, -1)) * ctg_module;
+        double cosinus = cos.calculate(x,precision);
+        return cosinus/sinus;
     }
 
     @Override
