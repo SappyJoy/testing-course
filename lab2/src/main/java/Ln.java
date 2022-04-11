@@ -1,9 +1,9 @@
 public class Ln extends MathFunction {
     static int DEFAULT_PRECISION = 6;
 
-    private double ln(double x, int precision) {
+    private double ln(double x, int precision) throws AssertionError {
         checkPrecision(precision);
-        assert x > 0 : "x should be equals or greater zero";
+        assert x > 0 : "x should be greater than zero";
 
         double y = (x - 1) / (x + 1);
         double previousResult = 0;

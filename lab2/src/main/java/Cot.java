@@ -1,5 +1,7 @@
 import java.util.List;
 
+import static java.lang.String.format;
+
 public class Cot extends MathFunction {
 
     private final MathFunction sin;
@@ -16,7 +18,10 @@ public class Cot extends MathFunction {
     }
 
     private double cot(double x, int precision) {
-        assert x / Math.PI != 0 : "дурак оно в бесконечность уйдет";
+        if (x < EPSILON && x > -EPSILON) {
+            throw new ArithmeticException(format("Function value for argument %s doesn't exist", x));
+        }
+
         double sinus  = sin.calculate(x, precision);
         double cosinus = cos.calculate(x,precision);
         return cosinus/sinus;
