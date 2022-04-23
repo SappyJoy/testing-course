@@ -12,3 +12,6 @@
 */target/
 
 lab2/csv
+
+lab3/.gradle
+lab3/build
