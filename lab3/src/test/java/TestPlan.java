@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,8 @@ public class TestPlan {
     System.setProperty(Configuration.getProperty("firefox_driver"), Configuration.getProperty("firefox_driver_file"));
     System.setProperty(Configuration.getProperty("chrome_driver"), Configuration.getProperty("chrome_driver_file"));
     driver = new ChromeDriver();
+    driver.manage().window().maximize();
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
   }
 
   @Test
@@ -24,7 +27,7 @@ public class TestPlan {
     page.pressSignInButton();
 
     SignInPage signInPage = new SignInPage(driver);
-    signInPage.enterLogin(Configuration.getProperty("email"));
+    signInPage.enterLogin(Configuration.getProperty("username"));
     signInPage.enterPassword(Configuration.getProperty("password"));
     signInPage.pressContinueButton();
 
