@@ -26,5 +26,8 @@
 	6. Заполняем поле бюджет значением 250 `xpath = //*[@id="__ZONE__main"]/div/div/div/div[2]/div/div[2]/section/section[2]/section[2]/div/div/div/input`
 	7. Нажимаем кнопку Review Your Brief `xpath = //*[@id="__ZONE__main"]/div/div/div/footer/button[2]`
 	8. Нажимаем кнопку Send Brief `xpath = //*[@id="__ZONE__main"]/div/div/div/footer/button[2]`
-4. Нажимаем Got it `//*[@id="__ZONE__main"]/div/div/section/a`
-5. А как проверить, что запостил?
+4. Нажимаем Got it `xpath = //*[@id="__ZONE__main"]/div/div/section/a`
+5. Нажимаем на кнопку Notifications `xpath = //*[@id="Header"]/header/div/div/nav/ul/li[2]/div/div[2]/span/div/span/button`
+6. Переходим по последнему уведомлению `xpath = //*[@id="62814386a8dc0c0010a90dd4"]`
+7. Проверяем значение в поле Budget `xpath = //*[@id="__ZONE__main"]/div/div/div/div[2]/ul[1]/li[1]/div/p` == 250
+8. Проверяем описание запроса `xpath = //*[@id="__ZONE__main"]/div/div/div/div[2]/ul[2]/li/div/p`
